@@ -1,5 +1,14 @@
 <template name="index">
   <section class="col-xs-12">
-    <h1>Index Page</h1>
+    <h1 class='text-center'>Index Page</h1>
+    <form class="form-inline" action="index.html" method="post">
+      <div class="form-group">
+        <label for="mood">Mood</label>
+        {{#each moods}}
+          {{name}}
+        {{/each}}
+        <label for="genre">Genre</label>
+      </div>
+    </form>
   </section>
 </template>
