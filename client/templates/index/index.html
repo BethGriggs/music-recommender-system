@@ -4,10 +4,11 @@
     <form class="form-inline" action="index.html" method="post">
       <div class="form-group">
         <label for="mood">Mood</label>
-        {{#each moods}}
-          {{name}}
-        {{/each}}
-        <label for="genre">Genre</label>
+        <select class="form-control" name="mood">
+          {{#each moods}}
+            <option value="{{name}}">{{name}}</option>
+          {{/each}}
+        </select>
       </div>
     </form>
   </section>
