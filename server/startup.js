@@ -3,19 +3,19 @@ Meteor.startup(function() {
   var genres = ['Rock', 'Pop', 'Folk', 'Electro', 'R&B',
   'Hip-hop', 'Vocal Pop', 'Soundtrack', 'Classical', 'Latin', 'World', 'Reggae', 'Blues',
   'Jazz', 'Country', 'Metal'];
-  if(moodCollection.find().count() === 0) {
+  if(Mood.find().count() === 0) {
     for(var i=0; i<moods.length; i++) {
       console.log('Inserting Mood: ' + moods[i]);
-      moodCollection.insert({
+      Mood.insert({
         name: moods[i]
       });
     }
   }
 
-  if(genreCollection.find().count() === 0) {
+  if(Genre.find().count() === 0) {
     for(var i=0; i<genres.length; i++) {
       console.log('Inserting Genre: ' + genres[i]);
-      genreCollection.insert({
+      Genre.insert({
         name: genres[i]
       });
     }

@@ -1,6 +1,6 @@
-genreCollection = new Mongo.Collection('genreCollection');
+Genre = new Mongo.Collection('genres');
 
-genreCollection.allow({
+Genre.allow({
   insert: function() {
     return false;
   },

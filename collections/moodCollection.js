@@ -1,6 +1,6 @@
-moodCollection = new Mongo.Collection('moodCollection');
+Mood = new Mongo.Collection('moods');
 
-moodCollection.allow({
+Mood.allow({
   insert: function() {
     return false;
   },
