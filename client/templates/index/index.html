@@ -1,14 +1,18 @@
 <template name="index">
   <section class="col-xs-12">
-    <h1 class='text-center'>Index Page</h1>
+    <h1 class='text-center'> Page</h1>
     <form class="form-inline" action="index.html" method="post">
       <div class="form-group">
         <label for="mood">Mood</label>
-        <select class="form-control" name="mood">
+        <select class="form-control col-md-4" name="mood" id="mood">
           {{#each moods}}
             <option value="{{name}}">{{name}}</option>
           {{/each}}
         </select>
+
+        <script type="text/javascript">
+          $('select').select2();
+        </script>
       </div>
     </form>
   </section>
