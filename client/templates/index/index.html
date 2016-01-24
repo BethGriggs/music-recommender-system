@@ -9,6 +9,12 @@
             <option value="{{name}}">{{name}}</option>
           {{/each}}
         </select>
+        <label for="genre">Genre</label>
+        <select class="js-example-basic-multiple form-control col-md-2" name="genre" id="genre">
+          {{#each genres}}
+            <option value="{{name}}">{{name}}</option>
+          {{/each}}
+        </select>
       </div>
     </form>
   </section>
