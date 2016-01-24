@@ -1,7 +1,7 @@
 <template name="index">
   <section class="col-xs-12">
     <h1 class='text-center'> Music Mood Thing</h1>
-    <form class="form-inline" action="index.html" method="post">
+    <form class="form-inline" action="" method="post">
       <div class="form-group">
         <label for="mood">Mood</label>
         <select class="js-example-basic-multiple form-control col-md-2" name="mood" id="mood">
@@ -15,6 +15,7 @@
             <option value="{{name}}">{{name}}</option>
           {{/each}}
         </select>
+        <input class='form-control btn btn-primary' type="submit" name="submit" value="Join Room">
       </div>
     </form>
   </section>
