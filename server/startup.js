@@ -1,4 +1,6 @@
 Meteor.startup(function() {
+  // This function is run everytime meteor starts - It can be used to insert required data into
+  // the database at first run. If any collections are empty populate them at startup with data
   var moods = ['Energentic', 'Dark', 'Positive', 'Calm'];
   var genres = ['Rock', 'Pop', 'Folk', 'Electro', 'R&B',
   'Hip-hop', 'Vocal Pop', 'Soundtrack', 'Classical', 'Latin', 'World', 'Reggae', 'Blues',

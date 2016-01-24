@@ -1,3 +1,4 @@
+// See genreModel.js for full comments
 Mood = new Mongo.Collection('moods');
 
 Mood.allow({
