@@ -1,5 +1,26 @@
 <template name='room'>
   <section class='col-xs-12'>
     <h1 class='text-center'>{{name}}</h1>
+    <!-- Show Details - Example for now! -->
+    <p>
+      Room Details:
+    </p>
+    <ul>
+      <li>Name: {{name}}</li>
+      <li>Playlist:
+        <ul>
+          {{#each playlist}}
+            <li></li>
+          {{/each}}
+        </ul>
+      </li>
+      <li>Users:
+        <ul>
+          {{#each users}}
+            <li>Mood: {{mood}}, Genre: {{genre}}, Join Time: {{joinTime}}</li>
+          {{/each}}
+        </ul>
+      </li>
+    </ul>
   </section>
 </template>

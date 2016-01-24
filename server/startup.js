@@ -8,15 +8,18 @@ Meteor.startup(function() {
   var rooms = [
     {
       name: 'Room 1',
-      playlist: []
+      playlist: [],
+      users: []
     },
     {
       name: 'Room 2',
-      playlist: []
+      playlist: [],
+      users: []
     },
     {
       name: 'Room 3',
-      playlist: []
+      playlist: [],
+      users: []
     }
   ];
 
