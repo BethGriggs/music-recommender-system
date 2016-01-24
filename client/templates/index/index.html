@@ -4,15 +4,21 @@
     <form class="form-inline" action="" method="post">
       <div class="form-group">
         <label for="mood">Mood</label>
-        <select class="js-example-basic-multiple form-control col-md-2" name="mood" id="mood">
+        <select class="js-example-basic-multiple form-control col-xs-4" name="mood" id="mood">
           {{#each moods}}
             <option value="{{name}}">{{name}}</option>
           {{/each}}
         </select>
         <label for="genre">Genre</label>
-        <select class="js-example-basic-multiple form-control col-md-2" name="genre" id="genre">
+        <select class="js-example-basic-multiple form-control col-xs-4" name="genre" id="genre">
           {{#each genres}}
             <option value="{{name}}">{{name}}</option>
+          {{/each}}
+        </select>
+        <label for="room">Room</label>
+        <select class="js-example-basic-multiple form-control col-xs-4" name="room" id="room">
+          {{#each rooms}}
+            <option value="{{_id}}">{{name}}</option>
           {{/each}}
         </select>
         <input class='form-control btn btn-primary' type="submit" name="submit" value="Join Room">

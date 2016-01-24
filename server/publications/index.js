@@ -5,3 +5,7 @@ Meteor.publish('moods', function() {
 Meteor.publish('genres', function() {
   return Genre.find();
 });
+
+Meteor.publish('rooms', function() {
+  return Room.find();
+});
