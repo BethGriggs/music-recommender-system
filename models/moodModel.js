@@ -1,4 +1,4 @@
-Mood = new Mongo.Collection('mood');
+Mood = new Mongo.Collection('moods');
 
 Mood.allow({
   insert: function() {
