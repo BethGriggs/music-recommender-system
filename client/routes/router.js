@@ -25,6 +25,14 @@ Router.route('index', {
   }
 });
 
+Router.route('/room/:_id/join', function() {
+  var roomId = this.params._id;
+  var joiningUser = this.request.body;
+  Room.update({_id: this.data._id}, {$push: {users: joiningUser}}); // Push new user of room to users array inside the room
+  this.response.statusCode = 200;
+  this.response.end();
+}, {where: 'server'})
+
 Router.route('room', {
   // Defines a route with an ID as a parameter - ID of the room you wish to join
   path: '/room/:_id',
