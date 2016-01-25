@@ -13,19 +13,19 @@ Template.index.events({
     var url = '/room/' + controls[2].value + '/join';
     var data = {
       mood: controls[0].value,
-      genre: controls[1].value
+      genre: controls[1].value,
+      joinTime: new Date()
     };
-    console.log(url);
-    console.log(data);
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', url);
-    xhr.addEventListener('load', function(e) {
-      if(xhr.status === 200) {
+    HTTP.put(url, {data: data}, function(err, result) {
+      if(err) {
+        // Error Handler - Need to do.
+      }
+
+      if(result.statusCode === 200){
         window.location.href = '/room/' + controls[2].value + '?mood=' + data.mood + '&genre=' + data.genre;
       }
     });
-    var json = JSON.stringify(data);
-    xhr.send(json);
+
     return false;
   }
 });
