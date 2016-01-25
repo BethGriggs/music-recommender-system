@@ -26,15 +26,17 @@ Router.route('index', {
 });
 
 Router.route('joinRoom', {
+  // Server side route - Only available on the server and will not load in the browser
   path: '/room/:_id/join',
   where: 'server',
   action: function() {
-    var req = this.request;
-    var res = this.response;
-    var roomId = this.params._id;
-    var data = req.body;
+    var req = this.request; // Request Info
+    var res = this.response; // Response Object
+    var roomId = this.params._id; // Room ID
+    var data = req.body; // Data
 
     Room.update({_id: roomId}, {$push: {users: data}}, function(err) {
+      // Push new user of room to users array inside the room and issue responses
       if(err) {
         res.statusCode = 500;
         res.body = err;
@@ -42,7 +44,7 @@ Router.route('joinRoom', {
         res.statusCode = 200;
       }
       res.end();
-    }); // Push new user of room to users array inside the room
+    });
   }
 });
 
