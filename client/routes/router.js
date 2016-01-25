@@ -26,6 +26,7 @@ Router.route('index', {
 });
 
 Router.route('/room/:_id/join', function() {
+  console.log(this.request.body);
   var roomId = this.params._id;
   var joiningUser = this.request.body;
   Room.update({_id: this.data._id}, {$push: {users: joiningUser}}); // Push new user of room to users array inside the room
