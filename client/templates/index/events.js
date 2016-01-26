@@ -15,7 +15,8 @@ Template.index.events({
       // Data Object of moods and genre for joining user
       mood: controls[0].value,
       genre: controls[1].value,
-      joinTime: new Date()
+      joinTime: new Date(),
+      userId: Meteor.userId()
     };
     HTTP.put(url, {data: data}, function(err, result) {
       // AJAX put request to add user to room

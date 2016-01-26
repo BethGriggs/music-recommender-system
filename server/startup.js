@@ -47,4 +47,9 @@ Meteor.startup(function() {
       Room.insert(rooms[i]);
     }
   }
+
+  // Setup Guest Accounts
+  console.log('Enabled Guest Accounts');
+  AccountsGuest.anonymous = true;
+  AccountsGuest.name = true;
 });
