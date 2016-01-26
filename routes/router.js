@@ -48,6 +48,7 @@ Router.route('joinRoom', {
   }
 });
 
+
 Router.route('room', {
   // Defines a route with an ID as a parameter - ID of the room you wish to join
   path: '/room/:_id',
@@ -59,5 +60,17 @@ Router.route('room', {
     // Make Room Data available to given template. As this is being returned directly just using {{name}} would show name
     // of the room being subscribed to
     return Room.findOne(this.params._id);
+  }
+});
+
+Router.route('playRoom', {
+  path: '/room/:_id/play', // URL Structure
+  waitOn: function() {
+    return Meteor.subscribe('room', this.params._id);
+  },
+  data: function() {
+    // This will make data available for use in templates. For example {{moods[0].name}} in a template would
+    // display the name for 0 element in moods. See templates/index/index.html for uses
+    return Room.findOne();
   }
 });
