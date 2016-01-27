@@ -4,4 +4,6 @@ Template.room.rendered = function() {
   // Use HTTP.call - http://docs.meteor.com/#/full/http for AJAX
   var data = this.data; // Data available to template from router - Room Data
   console.log(data);
+
+
 }

@@ -1,138 +1,172 @@
 {
-	"sleepy": [{
-		"valence": 0.01 ,
-		"arousal": 1.00
+	"depressed": [{
+		"valence": -0.81,
+		"arousal": -0.48,
+		"index": 1
+	}],
+	"sad": [{
+		"valence": -0.81,
+		"arousal": -0.40,
+		"index": 2
+	}],
+	"disappointed": [{
+		"valence": -0.80,
+		"arousal": -0.03,
+		"index": 3
+	}],
+	"anxious": [{
+		"valence": -0.72,
+		"arousal": -0.80,
+		"index": 4
+	}],
+	"distressed": [{
+		"valence": -0.71,
+		"arousal": 0.55,
+		"index": 5
+	}],
+	"uncomfortable": [{
+		"valence": -0.68,
+		"arousal": -0.37,
+		"index": 6
+	}],
+	"discontent": [{
+		"valence": -0.68,
+		"arousal": -0.32,
+		"index": 7
+	}],
+	"frustrated": [{
+		"valence": -0.60,
+		"arousal": 0.40,
+		"index": 8
+	}],
+	"annoyed": [{
+		"valence": -0.44,
+		"arousal": 0.76,
+		"index": 9
+	}],
+	"angry": [{
+		"valence": -0.40,
+		"arousal": 0.79,
+		"index": 10
+	}],
+	"bored": [{
+		"valence": -0.35,
+		"arousal": -0.78,
+		"index": 11
+	}],
+	"embarrassed": [{
+		"valence": -0.31,
+		"arousal": -0.60,
+		"index": 12
+	}],
+	"apathetic": [{
+		"valence": -0.20,
+		"arousal": -0.12,
+		"index": 13
+	}],
+	"enraged": [{
+		"valence": -0.18,
+		"arousal": -0.83,
+		"index": 14
+	}],
+	"afraid": [{
+		"valence": -0.12,
+		"arousal": 0.79,
+		"index": 15
+	}],
+	"worried": [{
+		"valence": -0.07,
+		"arousal": -0.32,
+		"index": 16
+	}],
+	"melancholy": [{
+		"valence": -0.05,
+		"arousal": -0.65,
+		"index": 17
 	}],
 	"tired": [{
 		"valence": -0.01,
-		"arousal": -1.00
+		"arousal": -1.00,
+		"index": 18
 	}],
-  "afraid": [{
-		"valence": -0.12,
-		"arousal": 0.79
+	"sleepy": [{
+		"valence": 0.01,
+		"arousal": 1.00,
+		"index": 19
 	}],
-  "angry": [{
-		"valence": -0.40,
-		"arousal": 0.79
-	}],
-  "calm": [{
-		"valence": 0.78,
-		"arousal": -0.68
-	}],
-  "relaxed": [{
-		"valence": 0.71,
-		"arousal": -0.565
-	}],
-  "content": [{
-		"valence": 0.81,
-		"arousal": -0.55
-	}],
-  "depressed": [{
-		"valence": -0.81,
-		"arousal": -0.48
-	}],
-  "discontent": [{
-		"valence": -0.68,
-		"arousal": -0.32
-	}],
-  "determined": [{
-    "valence": 0.73,
-    "arousal": 0.26
-  }],
-  "happy": [{
-		"valence": 0.89,
-		"arousal": 0.17
-	}],
-  "anxious": [{
-		"valence": -0.72,
-		"arousal": -0.80
-	}],
-  "good": [{
-		"valence": 0.90,
-		"arousal": -0.08
-	}],
-  "pensive": [{
+	"pensive": [{
 		"valence": 0.03,
-		"arousal": -0.60
+		"arousal": -0.60,
+		"index": 20
 	}],
-  "impressed": [{
+	"impressed": [{
 		"valence": 0.39,
-		"arousal": -0.06
+		"arousal": -0.06,
+		"index": 21
 	}],
-  "frustrated": [{
-		"valence": -0.60,
-		"arousal": 0.40
-	}],
-  "disappointed": [{
-		"valence": -0.80,
-		"arousal": -0.03
-	}],
-  "bored": [{
-		"valence": -0.35,
-		"arousal": -0.78
-	}],
-  "annoyed": [{
-		"valence": -0.44,
-		"arousal": 0.76
-	}],
-  "enraged": [{
-		"valence": -0.18,
-		"arousal": -0.83
-	}],
-  "excited": [{
-		"valence": 0.70,
-		"arousal": 0.71
-	}],
-  "melancholy": [{
-		"valence": -0.05,
-		"arousal": -0.65
-	}],
-  "satisfied": [{
-		"valence": 0.77,
-		"arousal": -0.63
-	}],
-  "distressed": [{
-		"valence": -0.71,
-		"arousal": 0.55
-	}],
-  "uncomfortable": [{
-		"valence": -0.68,
-		"arousal": -0.37
-	}],
-  "worried": [{
-		"valence": -0.07,
-		"arousal": -0.32
-	}],
-  "amused": [{
+	"peaceful": [{
 		"valence": 0.55,
-		"arousal": 0.19
+		"arousal": -0.80,
+		"index": 22
 	}],
-  "apathetic": [{
-		"valence": -0.20,
-		"arousal": -0.12
-	}],
-  "peaceful": [{
+	"amused": [{
 		"valence": 0.55,
-		"arousal": -0.80
+		"arousal": 0.19,
+		"index": 23
 	}],
-  "contemplative": [{
+	"contemplative": [{
 		"valence": 0.58,
-		"arousal": -0.60
+		"arousal": -0.60,
+		"index": 24
 	}],
-  "embarrassed": [{
-		"valence": -0.31,
-		"arousal": -0.60
-	}],
-  "sad": [{
-		"valence": -0.81,
-		"arousal": -0.40
-	}],
-  "hopeful": [{
+	"hopeful": [{
 		"valence": 0.61,
-		"arousal": -0.30
+		"arousal": -0.30,
+		"index": 25
 	}],
-  "pleased": [{
+	"excited": [{
+		"valence": 0.70,
+		"arousal": 0.71,
+		"index": 26
+	}],
+	"relaxed": [{
+		"valence": 0.71,
+		"arousal": -0.565,
+		"index": 27
+	}],
+	"determined": [{
+		"valence": 0.73,
+		"arousal": 0.26,
+		"index": 28
+	}],
+	"satisfied": [{
+		"valence": 0.77,
+		"arousal": -0.63,
+		"index": 29
+	}],
+	"calm": [{
+		"valence": 0.78,
+		"arousal": -0.68,
+		"index": 30
+	}],
+	"content": [{
+		"valence": 0.81,
+		"arousal": -0.55,
+		"index": 31
+	}],
+	"pleased": [{
 		"valence": 0.89,
-		"arousal": -0.10
+		"arousal": -0.10,
+		"index": 32
+	}],
+	"happy": [{
+		"valence": 0.89,
+		"arousal": 0.17,
+		"index": 33
+	}],
+	"good": [{
+		"valence": 0.90,
+		"arousal": -0.08,
+		"index": 34
 	}]
 }
