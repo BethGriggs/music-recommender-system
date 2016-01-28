@@ -16,27 +16,9 @@ Template.playRoom.rendered = function() {
           for (var user in data.users){
             console.log(user);
               var mood = data.users[user].mood;
-          //console.log("Mood: " + mood);
-          console.log(moodValues[mood]);
               total += moodValues[mood].index;
           }
-          console.log(total);
+          console.log("Average: " + total/data.users.length);
       }
     });
-
-
-    //  var roomMoods = [];
-    //  for (var user in data.users){
-    //      roomMoods.push(data.users[user].mood);
-    //  }
-    //  console.log("Room Moods 0: " + roomMoods.length);
-    //  var total= 0;
-     //
-    //  $.get( "/moodValues.json", function( moodValues ) {
-    //      for (var i=0; i< roomMoods.length; i++){
-    //                  total+= moodValues[roomMoods[i]][0].index;
-    //      }
-     //
-    //      console.log("average index" + total/ roomMoods.length);
-    //  });
 }
