@@ -11,32 +11,32 @@ Template.playRoom.rendered = function() {
 
       if(result) {
           var total= 0;
-        moodValues = JSON.parse(result.content);
+          moodValues = JSON.parse(result.content);
           console.log(moodValues);
           for (var user in data.users){
-              console.log(user);
+            console.log(user);
               var mood = data.users[user].mood;
-            //  console.log("Mood: " + mood);
-          //    console.log("MoodValues.mood: " + moodValues[mood].toString());
-              total += moodValues.mood.index;
+          //console.log("Mood: " + mood);
+          console.log(moodValues[mood]);
+              total += moodValues[mood].index;
           }
           console.log(total);
       }
     });
 
 
-     var roomMoods = [];
-     for (var user in data.users){
-         roomMoods.push(data.users[user].mood);
-     }
-     console.log("Room Moods 0: " + roomMoods.length);
-     var total= 0;
-
-     $.get( "/moodValues.json", function( moodValues ) {
-         for (var i=0; i< roomMoods.length; i++){
-                     total+= moodValues[roomMoods[i]][0].index;
-         }
-
-         console.log("average index" + total/ roomMoods.length);
-     });
+    //  var roomMoods = [];
+    //  for (var user in data.users){
+    //      roomMoods.push(data.users[user].mood);
+    //  }
+    //  console.log("Room Moods 0: " + roomMoods.length);
+    //  var total= 0;
+     //
+    //  $.get( "/moodValues.json", function( moodValues ) {
+    //      for (var i=0; i< roomMoods.length; i++){
+    //                  total+= moodValues[roomMoods[i]][0].index;
+    //      }
+     //
+    //      console.log("average index" + total/ roomMoods.length);
+    //  });
 }
