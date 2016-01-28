@@ -5,5 +5,4 @@ Template.room.rendered = function() {
   var data = this.data; // Data available to template from router - Room Data
   console.log(data);
 
-
 }
