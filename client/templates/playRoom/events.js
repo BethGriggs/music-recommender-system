@@ -12,13 +12,11 @@ Template.playRoom.rendered = function() {
     console.log("Room Moods 0: " + roomMoods.length);
     var total= 0;
 
-
     $.get( "/moodValues.json", function( moodValues ) {
-        console.log("moodvals: " + moodValues);
         for (var i=0; i< roomMoods.length; i++){
-                    console.log(roomMoods[i]);
-                    console.log(moodValues[roomMoods[i]]);
-                  //  console.log(moodValues[mood]);
+                    total+= moodValues[roomMoods[i]][0].index;
         }
+
+        console.log("average index" + total/ roomMoods.length);
     });
 }
