@@ -114,38 +114,7 @@ Router.route('playRoom', {
     var moodValues;
     var next = this.next;
     var calculateAverage = function() {
-      HTTP.get('/moodValues.json', function(err, result) {
-        if(err) {
 
-        }
-
-        if(result) {
-            var total = 0;
-            var room = Room.findOne();
-            moodValues = JSON.parse(result.content);
-
-            for (var user in room.users){
-              // Create a total accross all moods
-                var mood = room.users[user].mood;
-                total += moodValues[mood].index;
-            }
-
-            var avg = Math.round(total / room.users.length); // Get an average index for next mood
-            var nextMood;
-
-            for(var key in moodValues) {
-              // Loop through moods and find average index of next mood
-              if(moodValues.hasOwnProperty(key)) {
-                var obj = moodValues[key];
-                if(obj.index === avg) {
-                  nextMood = key; // Stop when next mood is found
-                  break
-                }
-              }
-            }
-            getAverageTracks(nextMood, room._id); // Get tracks for next average mood
-        }
-      });
     };
 
     var getAverageTracks = function(mood, roomId) {
@@ -165,7 +134,7 @@ Router.route('playRoom', {
       });
     };
 
-    calculateAverage();
+    Meteor.call('calculateAverage', this.params._id);
   },
   data: function() {
     // This will make data available for use in templates. For example {{moods[0].name}} in a template would
