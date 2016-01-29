@@ -55,8 +55,24 @@ Router.route('getTracks', {
     var req = this.request;
     var res = this.response;
     var data = req.body;
+    var api = 'mz7v924x'; // BAD PRACTICE - SHOULD BE HIDDEN
+    var params = {
+      tag: data.mood,
+      apikey: api,
+      fct: 'getfrommood',
+      format: 'json'
+    };
+    var url = 'http://musicovery.com/api/V3/playlist.php';
+    HTTP.get(url, {params: params}, function(err, result) {
+      if(err) {
+        console.log('Musicovery Error: ' + err);
+      }
 
-    console.log(data);
+      if(result) {
+        var musicData = result.data;
+        console.log(musicData);
+      }
+    });
   }
 })
 
@@ -79,6 +95,49 @@ Router.route('playRoom', {
   path: '/room/:_id/play', // URL Structure
   waitOn: function() {
     return Meteor.subscribe('room', this.params._id);
+  },
+  onBeforeAction: function(pause) {
+    var moodValues;
+    var calculateAverage = function() {
+      HTTP.get('/moodValues.json', function(err, result) {
+        if(err) {
+
+        }
+
+        if(result) {
+            var total = 0;
+            var room = Room.findOne();
+            moodValues = JSON.parse(result.content);
+
+            for (var user in room.users){
+              // Create a total accross all moods
+                var mood = room.users[user].mood;
+                total += moodValues[mood].index;
+            }
+
+            var avg = Math.round(total / room.users.length); // Get an average index for next mood
+            var nextMood;
+
+            for(var key in moodValues) {
+              // Loop through moods and find average index of next mood
+              if(moodValues.hasOwnProperty(key)) {
+                var obj = moodValues[key];
+                if(obj.index === avg) {
+                  nextMood = key; // Stop when next mood is found
+                  break
+                }
+              }
+            }
+            getAverageTracks(nextMood); // Get tracks for next average mood
+        }
+      });
+    };
+
+    var getAverageTracks = function(mood) {
+
+    };
+
+    calculateAverage();
   },
   data: function() {
     // This will make data available for use in templates. For example {{moods[0].name}} in a template would

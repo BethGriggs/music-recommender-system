@@ -26,3 +26,4 @@ http
 artwells:accounts-guest
 check
 random
+peerlibrary:xml2js
