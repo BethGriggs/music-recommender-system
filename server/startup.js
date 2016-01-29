@@ -57,14 +57,13 @@ Meteor.startup(function() {
   console.log('Enabled Guest Accounts');
   AccountsGuest.anonymous = true;
   AccountsGuest.name = true;
+  var before = new Date();
+  before.setHours(before.getHours() - 2);
+  Accounts.removeOldGuests(before);
+  var rooms = Room.find({}).fetch();
+
   Meteor.setInterval(function() {
     // Check for expired accounts every X amount
-    var before = new Date();
-    before.setHours(before.getHours() - 2);
-    Accounts.removeOldGuests(before);
-
-    var rooms = Room.find({}).fetch();
-
     var users = Meteor.users.find({}, {
       // Get all user IDs
       fields: {
@@ -77,14 +76,13 @@ Meteor.startup(function() {
       userIds.push(users[i]._id); // Flatten users to array of ids
     }
 
-
     for(var i=0; i<rooms.length; i++) {
       // Remove expired user records from room
       var id = rooms[i]._id;
       Room.update({_id: id}, {
         "$pull": {
           "users": {
-            "_id": {
+            "userId": {
               "$nin": userIds
             }
           }
