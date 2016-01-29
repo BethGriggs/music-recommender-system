@@ -49,6 +49,7 @@ Router.route('joinRoom', {
 });
 
 Router.route('getTracks', {
+  // Route to get tracks based on mood
   path: '/tracks',
   where: 'server',
   action: function() {
@@ -69,8 +70,21 @@ Router.route('getTracks', {
       }
 
       if(result) {
-        var musicData = result.data;
-        console.log(musicData);
+        var musicData = result.data.root;
+        var tracks = musicData.tracks.track;
+        Room.update({_id: data.roomId}, {
+          "$set": {
+            "playlist": tracks
+          }
+        }, function(err) {
+          if(err) {
+            res.statusCode = 500;
+            res.body = err;
+          } else {
+            res.statusCode = 200;
+          }
+          res.end();
+        });
       }
     });
   }
@@ -96,8 +110,9 @@ Router.route('playRoom', {
   waitOn: function() {
     return Meteor.subscribe('room', this.params._id);
   },
-  onBeforeAction: function(pause) {
+  onBeforeAction: function(next) {
     var moodValues;
+    var next = this.next;
     var calculateAverage = function() {
       HTTP.get('/moodValues.json', function(err, result) {
         if(err) {
@@ -128,13 +143,26 @@ Router.route('playRoom', {
                 }
               }
             }
-            getAverageTracks(nextMood); // Get tracks for next average mood
+            getAverageTracks(nextMood, room._id); // Get tracks for next average mood
         }
       });
     };
 
-    var getAverageTracks = function(mood) {
+    var getAverageTracks = function(mood, roomId) {
+      var data = {
+        mood: mood,
+        roomId: roomId
+      };
 
+      HTTP.put('/tracks', {data: data}, function(err, res) {
+        if(err) {
+
+        }
+
+        if(res) {
+          next();
+        }
+      });
     };
 
     calculateAverage();
