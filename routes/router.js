@@ -48,6 +48,18 @@ Router.route('joinRoom', {
   }
 });
 
+Router.route('getTracks', {
+  path: '/tracks',
+  where: 'server',
+  action: function() {
+    var req = this.request;
+    var res = this.response;
+    var data = req.body;
+
+    console.log(data);
+  }
+})
+
 
 Router.route('room', {
   // Defines a route with an ID as a parameter - ID of the room you wish to join

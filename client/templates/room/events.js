@@ -1,8 +1,27 @@
-Template.room.rendered = function() {
-  // http://docs.meteor.com/#/full/templates_api - Explains how to bind to certain events within templates
-  // Run this function on template load - Beth add your algorithm stuff here like AJAX Musicovery
-  // Use HTTP.call - http://docs.meteor.com/#/full/http for AJAX
-  var data = this.data; // Data available to template from router - Room Data
-  console.log(data);
 
-}
+Template.room.events({
+  'click #getTracks': function(e) {
+    e.preventDefault();
+    var query = window.location.search;
+    var temp = query.split('=')[1];
+    var mood = temp.split('&')[0];
+    temp = window.location.href.split('/')[4];
+    var roomId = temp.split('?')[0];
+    var data = {
+      'roomId': roomId,
+      'mood': mood
+    };
+
+    HTTP.put('/tracks', {data: data}, function(err, res) {
+      if(err) {
+
+      }
+
+      if(res) {
+
+      }
+    });
+
+    return false;
+  }
+});
