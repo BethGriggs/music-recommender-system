@@ -90,4 +90,27 @@ Meteor.startup(function() {
       });
     }
   }, 120000);
+
+  Meteor.setInterval(function() {
+    // Every 5mins
+    _.each(rooms, function(room) {
+      // Modern loop to handle async calls - http://stackoverflow.com/questions/24346046/how-do-i-invoke-meteor-call-multiple-times-in-a-loop-in-this-context
+      var roomId = room._id;
+      Room.update({_id: roomId}, {'$set': { 'playlist': [] } }, function(err, result) {
+        // Clear each room playlist
+          Meteor.call('calculateAverage', roomId, function(err, result) {
+            // Get a new average
+            var data = {
+              mood: result,
+              roomId: roomId
+            };
+            if(data.mood !== undefined) {
+              console.log('Getting new tracks for ' + room.name);
+              // If there is an average (people in room) get tracks
+              Meteor.call('getTracks', data);
+            }
+          });
+      });
+    });
+  }, 60000);
 });

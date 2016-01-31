@@ -9,8 +9,8 @@
       <li>Name: {{name}}</li>
       <li>Playlist:
         <ul>
-          {{#each playlist}}
-            <li></li>
+          {{#each playlist.track}}
+            <li>{{title}}</li>
           {{/each}}
         </ul>
       </li>

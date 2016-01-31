@@ -39,7 +39,9 @@ Meteor.methods({
         }
       }
     }
-
+    if(nextMood !== undefined) {
+      console.log(room.name + ' Mood: ' + nextMood);
+    }
     return nextMood;
   },
 
@@ -53,7 +55,7 @@ Meteor.methods({
     };
 
     var result = HTTP.get(url, {params: params});
-    var tracks = result.data.root.tracks.track;
+    var tracks = result.data.root.tracks;
     Room.update({_id: data.roomId}, {
       "$set": {
         "playlist": tracks
