@@ -10,7 +10,7 @@ Template.index.events({
     // Specified the event and the element you wish to bind to - In this case submitting a form with the ID of joinRoom
     e.preventDefault(); // Prevent form redirection
     var controls = e.target.elements; // Get form elements
-    var url = '/room/' + controls[2].value + '/join'; // Build post URL
+    var url = '/room/' + controls[2].value; // Build post URL
     var data = {
       // Data Object of moods and genre for joining user
       mood: controls[0].value,
@@ -18,18 +18,8 @@ Template.index.events({
       joinTime: new Date(),
       userId: Meteor.userId()
     };
-    HTTP.put(url, {data: data}, function(err, result) {
-      // AJAX put request to add user to room
-      if(err) {
-        // Error Handler - Need to do.
-      }
-
-      if(result.statusCode === 200){
-        // Redirect to room on success with querystring parameters set for easy access
-        window.location.href = '/room/' + controls[2].value + '?mood=' + data.mood + '&genre=' + data.genre;
-      }
-    });
-
+    var params = jQuery.param(data);
+    window.location.href = url + '?' + params;
     return false;
   }
 });
