@@ -35,7 +35,7 @@ Router.route('room', {
   onBeforeAction: function(next) {
     var roomId = this.params._id;
     var data = this.params.query;
-    var next = this.next();
+    var next = this.next;
     Meteor.call('joinRoom', roomId, data, function(err, result) {
       if(!err) {
         next();

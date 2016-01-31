@@ -1,10 +1,19 @@
 Meteor.methods({
   joinRoom: function(roomId, data) {
-    Room.update({_id: roomId}, {
-      $push: {
-        users: data
-      }
-    });
+    var room = Room.findOne({_id: roomId}, {fields: {users: 1}});
+    var users = [];
+    for(var i = 0; i<room.users.length; i++) {
+      var id = room.users[i].userId;
+      users.push(id);
+    }
+    var inList = users.indexOf(data.userId);
+    if(inList === -1) {
+      Room.update({_id: roomId}, {
+        $push: {
+          users: data
+        }
+      });
+    }
   },
   calculateAverage: function(roomId) {
     var moodValues = HTTP.get('http://localhost:3000/moodValues.json');
