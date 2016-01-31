@@ -58,18 +58,39 @@ Router.route('playRoom', {
     var next = this.next;
     var roomId = this.params._id;
 
-    Meteor.call('calculateAverage', roomId, function(err, result) {
-      var data = {
-        mood: result,
-        roomId: roomId
-      };
+    var playlist = Room.findOne({_id: roomId}).playlist.track;
+    if(playlist) {
+        // If playlist is empty on play populate
+      if(playlist.length === 0) {
+        Meteor.call('calculateAverage', roomId, function(err, result) {
+          var data = {
+            mood: result,
+            roomId: roomId
+          };
 
-      Meteor.call('getTracks', data, function(err, result) {
-        if(!err) {
-          next();
-        }
+          Meteor.call('getTracks', data, function(err, result) {
+            if(!err) {
+              next();
+            }
+          });
+        });
+      } else {
+        next();
+      }
+    } else {
+      Meteor.call('calculateAverage', roomId, function(err, result) {
+        var data = {
+          mood: result,
+          roomId: roomId
+        };
+
+        Meteor.call('getTracks', data, function(err, result) {
+          if(!err) {
+            next();
+          }
+        });
       });
-    });
+    }
   },
   data: function() {
     // This will make data available for use in templates. For example {{moods[0].name}} in a template would
